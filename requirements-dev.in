@@ -1,0 +1,11 @@
+# Development tools used by check.sh. busy.py itself has no dependencies.
+# Edit this file, then regenerate the lock (with hashes, for Python 3.10):
+#   uv pip compile --python-version 3.10 --generate-hashes requirements-dev.in -o requirements-dev.txt
+# Install with: python3 -m pip install --user -r requirements-dev.txt
+# gitleaks is not a Python package; install it separately. pip-audit runs
+# through uvx (see check.sh), so it is not installed here.
+ruff==0.15.19
+mypy==2.4.1
+pytest==9.1.1
+pytest-cov==7.1.0
+coverage==7.16.2

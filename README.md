@@ -66,6 +66,21 @@ You can. We cannot stop you. We would like it noted that we did not suggest it.
 **Does it actually touch my disk, network or production database?**
 No. Everything is fake: the files, the hosts, the hashes, the confidence.
 
+## Development
+
+Ironically, the fake work is backed by real tests, at 100% coverage. Install
+the dev tools, plus [uv](https://docs.astral.sh/uv/) and
+[gitleaks](https://github.com/gitleaks/gitleaks), then run the gate:
+
+```sh
+python3 -m pip install --user -r requirements-dev.txt
+./check.sh
+```
+
+That runs lint, formatting, strict type checking, the test suite with
+coverage, a dependency audit and a secret scan. See
+[PRECOMMIT.md](PRECOMMIT.md) for what each step does.
+
 ## License
 
 Do whatever you want with it. Look busy.

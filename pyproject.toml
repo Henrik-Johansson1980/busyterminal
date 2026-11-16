@@ -1,0 +1,37 @@
+[project]
+name = "busyterminal"
+version = "0.1.0"
+description = "Make your terminal look like it is doing serious, important work."
+requires-python = ">=3.10"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, bugbear, pyupgrade, simplify, isort, pep8-naming
+select = ["E", "F", "W", "B", "UP", "SIM", "I", "N"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "--cov --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["busy"]
+branch = true
+# The end-to-end tests run busy.py as a child process (subprocess, and
+# pty.fork + execv); measure those runs too.
+patch = ["subprocess", "fork", "execv"]
+parallel = true
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+# Branches on sys.platform can only take one direction on any one machine.
+partial_branches = ["if sys.platform"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+files = ["busy.py", "tests"]
